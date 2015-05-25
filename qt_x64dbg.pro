@@ -13,7 +13,9 @@ HEADERS += \
     ThemeManifest.hpp \
     ThemeSelector.hpp \
     Utils.hpp \
-    idaskins.h
+    idaskins.h \
+    idaskins.hpp \
+    x64dbgWrapper.hpp
 
 SOURCES += \
     Core.cpp \

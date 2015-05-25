@@ -30,8 +30,11 @@
 
 #include <memory>
 #include <QPixmap>
+
+#ifdef BUILD_IDA
 #include <ida.hpp>
 #include <idp.hpp>
+#endif // BUILD_IDA
 
 // ========================================================================= //
 // [ThemeSelector]                                                           //
@@ -94,7 +97,7 @@ void ThemeSelector::themeSelected()
             = QPixmap(entry.first.absolutePath() + "/" + entry.second->themePreviewImage());
     }
     else
-        m_curPreviewImage = nullptr;
+        m_curPreviewImage = QPixmap();
 
     updatePreview();
 }

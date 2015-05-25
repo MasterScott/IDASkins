@@ -26,7 +26,10 @@
 #define IDAFONTCONFIG_HPP
 
 #include <QSettings>
+
+#ifdef BUILD_IDA
 #include <pro.h>
+#endif // BUILLD_IDA
 
 // ========================================================================= //
 // [IdaFontConfig]                                                           //

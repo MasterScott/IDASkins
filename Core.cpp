@@ -32,10 +32,13 @@
 #include <QDir>
 #include <QApplication>
 #include <QMessageBox>
+
+#ifdef BUILD_IDA
 #include <idp.hpp>
 #include <diskio.hpp>
 #include <kernwin.hpp>
 #include <loader.hpp>
+#endif // BUILD_IDA
 
 // ========================================================================= //
 // [Core]                                                                    //
@@ -69,12 +72,16 @@ Core::Core()
 
     applyStylesheetFromSettings();
 
+#ifdef BUILD_IDA
     hook_to_notification_point(HT_UI, &uiHook, this);
+#endif // BUILD_IDA
 }
 
 Core::~Core()
 {
+#ifdef BUILD_IDA
     unhook_from_notification_point(HT_UI, &uiHook, this);
+#endif BUILD_IDA
 }
 
 void Core::runPlugin()
@@ -99,43 +106,6 @@ bool Core::applyStylesheet(QDir &themeDir)
     qApp->setStyleSheet(data);
     request_refresh(IWID_ALL);
     msg("[" PLUGIN_NAME "] Skin file successfully applied!\n");
-
-    /*
-    static bool first = true;
-    // Information gathering
-    if (!first)
-    {
-        QFile log(QString(idadir(nullptr)) + "/skin/object_log.log");
-        log.open(QFile::WriteOnly);
-        std::function<void(QObject*, int)> helper = [&](QObject *element, int depth)
-        {
-            for (int i = 0; i < depth; ++i)
-                log.write("--");
-            log.write(element->metaObject()->className());
-            log.write(" name: ");
-            log.write(element->objectName().toAscii().data());
-            if (strcmp(element->metaObject()->className(), "QLabel") == 0)
-            {
-                log.write("; text: ");
-                log.write(((QLabel*)element)->text().toAscii().data());
-            }
-            if (strcmp(element->metaObject()->className(), "QAbstractButton") == 0)
-            {
-                log.write("; icon: ");
-                log.write(((QAbstractButton*)element)->icon().name().toAscii().data());
-            }
-            log.write("\n");
-            auto children = element->children();
-            for (auto it = children.begin(); it != children.end(); ++it)
-                helper(*it, depth + 1);
-        };
-        helper(qApp->activeWindow(), 0);
-        log.flush();
-        log.close();
-    }
-    first = false;
-    */
-
     return true;
 }
 
@@ -168,12 +138,11 @@ void Core::preprocessStylesheet(QString &qss, const QString &themeDirPath)
     applyFontReplacements("DEBUG_REGISTERS", IdaFontConfig::FONT_DEBUG_REGISTERS);
     applyFontReplacements("TEXT_INPUT",      IdaFontConfig::FONT_TEXT_INPUT);
     applyFontReplacements("OUTPUT_WINDOW",   IdaFontConfig::FONT_OUTPUT_WINDOW);
-
-    //msg("%s\n", qss.toAscii().data());
 }
 
 int Core::uiHook(void *userData, int notificationCode, va_list va)
 {
+#ifdef BUILD_IDA
     auto thiz = static_cast<Core*>(userData);
     Q_ASSERT(thiz);
 
@@ -199,6 +168,11 @@ int Core::uiHook(void *userData, int notificationCode, va_list va)
             }
         } break;
     }
+#else
+    Q_UNUSED(userData);
+    Q_UNUSED(notificationCode);
+    Q_UNUSED(va);
+#endif // BUILD_IDA
 
     return 0;
 }

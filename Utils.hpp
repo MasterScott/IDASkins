@@ -25,6 +25,8 @@
 #ifndef UTILS_HPP
 #define UTILS_HPP
 
+#include "x64dbgWrapper.hpp"
+
 #include <QString>
 #include <QDir>
 

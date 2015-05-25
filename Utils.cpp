@@ -26,11 +26,13 @@
 
 #include "Settings.hpp"
 
+#ifdef BUILD_IDA
 #include <ida.hpp>
 #include <diskio.hpp>
+#endif // BUILD_IDA
 
 namespace Utils
-{;
+{
 
 QDir getThemesDir()
 {

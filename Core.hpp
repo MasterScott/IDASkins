@@ -28,7 +28,10 @@
 #include "Utils.hpp"
 
 #include <QObject>
+
+#ifdef BUILD_IDA
 #include <ida.hpp>
+#endif // BUILD_IDA
 
 // ========================================================================= //
 // [Core]                                                                    //
