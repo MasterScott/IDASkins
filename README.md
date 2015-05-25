@@ -5,7 +5,7 @@ Plugin providing advanced skinning support for the Qt version of IDA Pro utilizi
 
 # Installation
 ### x64dbg
-Place 'IDASkins.dp32' or 'IDASkins.dp64' into the 'plugins' directory of x64dbg to instal. Theme files (`skin` directory) should be placed in the same folder.
+Place `IDASkins.dp32` or `IDASkins.dp64` into the 'plugins' directory of x64dbg to instal. Theme files (`skin` directory) should be placed in the same folder.
 
 ### IDA
 Place `IDASkins.plX` into the `plugins` directory of your IDA installation. The theme files (the `skin` directory) needs to be copied to the root of your IDA installation.
