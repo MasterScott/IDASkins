@@ -15,8 +15,8 @@ Theming with IDASkins works using [Qt stylesheets](http://qt-project.org/doc/qt-
 
 ## Screenshots
 
-![Screenshot 1](https://raw.githubusercontent.com/Nukem9/ida-skins/master/media/screenshots/screencap2.png)
-![Screenshot 2](https://raw.githubusercontent.com/Nukem9/ida-skins/master/media/screenshots/screencap1.png)
+![Screenshot 1](https://raw.githubusercontent.com/Nukem9/IDASkins/master/media/screenshots/screencap2.png)
+![Screenshot 2](https://raw.githubusercontent.com/Nukem9/IDASkins/master/media/screenshots/screencap1.png)
 
 Screenshot above show:
 - x64dbg: The enclosed `stylesheet.css` in combination with [tr4ceflow's](http://pastebin.com/BYDKkiJX) theme.
