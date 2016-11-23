@@ -1,3 +1,6 @@
+Deprecated - See https://github.com/x64dbg/x64dbg/wiki/Stylesheets
+========
+
 IDASkins - x64dbg Edition
 =========
 
